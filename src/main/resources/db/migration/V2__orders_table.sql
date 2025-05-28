@@ -1,0 +1,11 @@
+CREATE SEQUENCE IF NOT EXISTS orders_seq START WITH 1 INCREMENT BY 50;
+
+CREATE TABLE orders
+(
+    id         BIGINT       NOT NULL,
+    order_date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    name       VARCHAR(100),
+    address    VARCHAR(200) NOT NULL,
+    cost       DOUBLE PRECISION,
+    CONSTRAINT pk_orders PRIMARY KEY (id)
+);

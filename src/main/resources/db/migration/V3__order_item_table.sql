@@ -1,0 +1,16 @@
+CREATE SEQUENCE IF NOT EXISTS order_item_seq START WITH 1 INCREMENT BY 50;
+
+CREATE TABLE order_item
+(
+    id       BIGINT  NOT NULL,
+    quantity INTEGER NOT NULL,
+    type_id  BIGINT  NOT NULL,
+    order_id BIGINT  NOT NULL,
+    CONSTRAINT pk_order_item PRIMARY KEY (id)
+);
+
+ALTER TABLE order_item
+    ADD CONSTRAINT FK_ORDER_ITEM_ON_ORDER FOREIGN KEY (order_id) REFERENCES orders (id);
+
+ALTER TABLE order_item
+    ADD CONSTRAINT FK_ORDER_ITEM_ON_TYPE FOREIGN KEY (type_id) REFERENCES coffee (id);
